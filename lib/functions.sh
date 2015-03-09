@@ -10,7 +10,7 @@ check_url() {
 download_and_extract_package() {
   url=$1
   dst=$2
-  curl -C - -qsSLf $url | tar xj --directory $dst
+  curl -C - -qsSLf $url | tar xz --directory $dst
 }
 
 erase_folder_if_exist() {
