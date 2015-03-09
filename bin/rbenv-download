@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Summary: Download ruby binaries directly from RVM repo
+# Summary: Download ruby binaries directly from a custom repo
 #
 # Usage: rbenv download <ruby-version>
 
@@ -14,17 +14,16 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-RVM_BINARIES_BASE=${RVM_BINARIES_BASE:-"http://rvm.io/binaries"}
+BINARIES_BASE=${BINARIES_BASE:-"https://s3.amazonaws.com/binaries.snap-ci.io/rubies"}
 RUBIES_ROOT="${RBENV_ROOT}/versions"
 
-source "$(dirname $BASH_SOURCE)/../lib/rvm_import.sh"
+source "$(dirname $BASH_SOURCE)/../lib/detect_system.sh"
 source "$(dirname $BASH_SOURCE)/../lib/functions.sh"
-source "$(dirname $BASH_SOURCE)/../lib/rvm.sh"
 
 detect_system
 
 ruby_version=$1
-package_url="${RVM_BINARIES_BASE}/${SYSTEM_NAME}/${SYSTEM_VERSION}/${SYSTEM_ARCH}/ruby-${ruby_version}.tar.bz2"
+package_url="${BINARIES_BASE}/${SYSTEM_NAME}/${SYSTEM_VERSION}/${SYSTEM_ARCH}/ruby-${ruby_version}.tar.gz"
 package_url=`echo $package_url | awk '{print tolower($0)}'`
 
 echo "Download and extract ruby ${ruby_version} from the RVM repository"
@@ -37,7 +36,5 @@ fi
 
 erase_folder_if_exist "${RUBIES_ROOT}/${ruby_version}"
 download_and_extract_package $package_url $RUBIES_ROOT
-rename_folder_if_exist "${RUBIES_ROOT}/ruby-${ruby_version}" "${RUBIES_ROOT}/${ruby_version}"
-remove_rvm_dependencies "${RUBIES_ROOT}/${ruby_version}"
 
 echo "Ruby ${ruby_version} has been installed"
