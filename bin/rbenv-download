@@ -40,7 +40,6 @@ if ! check_url $package_url; then
   exit 1
 fi
 
-erase_folder_if_exist "${RUBIES_ROOT}/${ruby_version}"
 download_and_extract_package $package_url $RUBIES_ROOT
 
 echo "Ruby ${ruby_version} has been installed"

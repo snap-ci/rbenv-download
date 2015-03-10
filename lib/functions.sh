@@ -13,11 +13,6 @@ download_and_extract_package() {
   curl -C - -qsSLf $url | tar xz --directory $dst
 }
 
-erase_folder_if_exist() {
-  folder=$1
-  rm -rf $folder
-}
-
 rename_folder_if_exist() {
   src=$1
   dst=$2
