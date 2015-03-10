@@ -20,9 +20,15 @@ RUBIES_ROOT="${RBENV_ROOT}/versions"
 source "$(dirname $BASH_SOURCE)/../lib/detect_system.sh"
 source "$(dirname $BASH_SOURCE)/../lib/functions.sh"
 
+ruby_version=$1
+
+if [ -d "${RUBIES_ROOT}/${ruby_version}" ]; then
+  echo "ruby ${ruby_version} already installed. Skipping installation.."
+  exit 0
+fi
+
 detect_system
 
-ruby_version=$1
 package_url="${BINARIES_BASE}/${SYSTEM_NAME}/${SYSTEM_VERSION}/${SYSTEM_ARCH}/ruby-${ruby_version}.tar.gz"
 package_url=`echo $package_url | awk '{print tolower($0)}'`
 
