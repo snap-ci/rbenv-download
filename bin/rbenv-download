@@ -22,11 +22,11 @@ source "$(dirname $BASH_SOURCE)/../lib/functions.sh"
 detect_system
 
 ruby_version=$1
+ruby_version_without_mri_prefix=$1
 
 # add `ruby-' prefix if it does not already have one
 if [[ "${ruby_version}" =~ ^ruby-* ]]; then
-  # do nothing
-  true
+  ruby_version_without_mri_prefix=$(echo $ruby_version | sed -e 's/^ruby-//g')
 elif [[ ! "${ruby_version}" =~ ^jruby-* ]]; then
   ruby_version="ruby-${ruby_version}"
 fi
@@ -49,6 +49,8 @@ fi
 
 download_and_extract_package $package_url $RUBIES_ROOT
 
+# prevent rbenv-rehash from barfing about missing version from the local .ruby-version file
+eval "`rbenv "sh-use" "${ruby_version_without_mri_prefix}"`"
 rbenv-rehash
 
 echo "Ruby ${ruby_version} has been installed"
