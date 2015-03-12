@@ -14,7 +14,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-BINARIES_BASE=${BINARIES_BASE:-"https://s3.amazonaws.com/binaries.snap-ci.io/rubies"}
+BINARIES_BASE=${BINARIES_BASE:-"https://s3.amazonaws.com/binaries.snap-ci.com/rubies"}
 RUBIES_ROOT="${RBENV_ROOT}/versions"
 
 source "$(dirname $BASH_SOURCE)/../lib/detect_system.sh"
