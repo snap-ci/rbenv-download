@@ -49,4 +49,6 @@ fi
 
 download_and_extract_package $package_url $RUBIES_ROOT
 
+rbenv-rehash
+
 echo "Ruby ${ruby_version} has been installed"
