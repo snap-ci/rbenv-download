@@ -13,14 +13,14 @@ rvm-download is an [rbenv](https://github.com/sstephenson/rbenv) plugin that pro
 Example: downloading ruby 2.2.0:
 ```
 vagrant@precise64:~$ rbenv download 2.2.0
-Download and extract ruby 2.2.0 from https://s3.amazonaws.com/binaries.snap-ci.io/rubies
+Download and extract ruby 2.2.0
 Ruby 2.2.0 has been installed
 ```
 
 Example: trying to download a missing package
 ```
 vagrant@precise64:~$ rbenv download 2.2.1
-Download and extract ruby 2.2.1 from https://s3.amazonaws.com/binaries.snap-ci.io/rubies
+Download and extract ruby 2.2.1
 https://s3.amazonaws.com/binaries.snap-ci.io/rubies/centos/6/x86_64/ruby-2.2.1.tar.gz cannot be reached
 Could not find a pre-compiled version of ruby '2.2.1' for your current system: CentOS x86_64 (6)
 ```
@@ -28,7 +28,7 @@ Could not find a pre-compiled version of ruby '2.2.1' for your current system: C
 Example: trying to install from a different URL
 ```
 vagrant@precise64:~$ RBENV_BINARIES_BASE=https://internal.example.com/rubies rbenv download 2.2.1
-Download and extract ruby 2.2.1 from https://internal.example.com/rubies
+Download and extract ruby 2.2.1
 https://internal.example.com/rubies/centos/6/x86_64/ruby-2.2.1.tar.gz cannot be reached
 Could not find a pre-compiled version of ruby '2.2.1' for your current system: CentOS x86_64 (6)
 ```

@@ -39,7 +39,7 @@ fi
 package_url="${RBENV_BINARIES_BASE}/${SYSTEM_NAME}/${SYSTEM_VERSION}/${SYSTEM_ARCH}/${ruby_version}.tar.gz"
 package_url=`echo $package_url | awk '{print tolower($0)}'`
 
-echo "Download and extract ruby ${ruby_version} from ${RBENV_BINARIES_BASE}"
+echo "Download and extract ruby ${ruby_version}"
 
 if ! check_url $package_url; then
   echo "${url} cannot be reached" >&2
