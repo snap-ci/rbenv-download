@@ -1,6 +1,6 @@
-# rvm-download
+# rbenv-download
 
-rvm-download is an [rbenv](https://github.com/sstephenson/rbenv) plugin that provides an `rbenv download` command to download and extract ruby binaries from the [Snap CI binaries repository](https://s3.amazonaws.com/binaries.snap-ci.io/).
+rbenv-download is an [rbenv](https://github.com/sstephenson/rbenv) plugin that provides an `rbenv download` command to download and extract ruby binaries from the [Snap CI binaries repository](https://s3.amazonaws.com/binaries.snap-ci.io/).
 
 ## Installation
 
